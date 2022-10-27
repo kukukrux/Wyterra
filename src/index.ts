@@ -1,21 +1,23 @@
+import axios from 'axios';
 import { config } from 'dotenv';
 config();
 
 
 const getRequest = (targetURL: string) => {
-	const xhr = new XMLHttpRequest();
-	xhr.open('GET', targetURL);
-
-	xhr.onload = () => {
-		console.log(xhr.response);
-	};
-
-	xhr.send();
+	axios.get(targetURL).then(response => {
+		return response;
+	});
 };
 
-//  const postRequest = () => {};
+const postRequest = (targetURL: string, payload) => {
+	axios.post(targetURL, payload);
+};
 
 /**
  * RUNTIME
  */
-getRequest('https://reqres.in/api/users');
+//  console.log(getRequest('https://reqres.in/api/users'));
+postRequest('https://reqres.in/api/register', {
+	'email': 'eve.holt@reqres.in',
+	'password': 'pistol',
+});
