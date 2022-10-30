@@ -1,5 +1,6 @@
 # wytera
 Pentest Script
+WORKING ACTIVELY CODE IS VERY EWWWWW
 
 ## How to start
 
