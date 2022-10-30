@@ -1,6 +1,7 @@
 # wytera
 Pentest Script
 WORKING ACTIVELY CODE IS VERY EWWWWW
+IM NOT GONNNA PAY 400€ TO PORTSWIGGER F U
 
 ## How to start
 
