@@ -6,6 +6,7 @@ const args = process.argv.slice(2);
 switch (args[0]) {
 case 'help': {
 	console.log('Insert Help Menu Here');
+	console.log(process.argv);
 	break;
 }
 case 'get': {
@@ -17,7 +18,7 @@ case 'post': {
 	break;
 }
 case 'attack': {
-	bruteForceAttack(args[1] as string);
+	bruteForceAttack(args[1] as string, args[2] as string);
 	break;
 }
 default: {
