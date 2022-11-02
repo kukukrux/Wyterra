@@ -1,0 +1,195 @@
+@font-face {
+  font-family: "Nunito-Regular";
+  src: url("/public/Nunito-Regular.ttf");
+}
+@font-face {
+  font-family: "Nunito-Bold";
+  src: url("/public/Nunito-Bold.ttf");
+}
+html {
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg, #242F36, #161d2c);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Nunitor-Regular", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.app {
+  margin: 0;
+}
+.app .navbar-container {
+  background-color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  color: #161d2c;
+}
+.app .navbar-container-logo {
+  cursor: pointer;
+}
+.app .navbar-container-links {
+  list-style: none;
+}
+.app .navbar-container-links > a {
+  background-color: rgb(0, 255, 170);
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: all 0.3s ease 0s;
+  color: #161d2c;
+  cursor: pointer;
+}
+.app .navbar-container-links > a:hover {
+  background-color: rgb(0, 230, 153);
+}
+.app .navbar-container-links > a.active {
+  background-color: rgb(0, 230, 153);
+}
+.app .content-wrapper {
+  margin: 0;
+  display: flex;
+}
+.app .content-wrapper .sidebar {
+  height: 100vh;
+}
+.app .content-wrapper .sidebar-links {
+  margin: 0;
+  padding: 10px;
+  border-style: solid;
+  border-right: 5;
+  border-left: 0;
+  border-top: 0;
+  border-bottom: 0;
+  border-right-color: #f9f9f9;
+}
+.app .content-wrapper .sidebar-links > p {
+  background-color: rgb(0, 255, 170);
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: all 0.3s ease 0s;
+  color: #161d2c;
+  cursor: pointer;
+}
+.app .content-wrapper .sidebar-links > p:hover {
+  background-color: rgb(0, 230, 153);
+}
+.app .content-wrapper .sidebar-links > p.active {
+  background-color: rgb(0, 213, 142);
+}
+.app .content-wrapper .page-attack {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.app .content-wrapper .page-attack.visible {
+  visibility: visible;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions {
+  visibility: hidden;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible {
+  visibility: visible;
+  padding: 20px;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  font-size: 20px;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible form {
+  display: inline;
+  width: 150px;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible form > * {
+  margin: 10px 0;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible form .targetURL {
+  width: 70vw;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible form .header {
+  width: 20vw;
+  height: 40px;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible form .data {
+  width: 20vw;
+  height: 40px;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible form input {
+  font-size: 16px;
+  width: 60px;
+  height: 30px;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible .requestContent {
+  display: flex;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible .requestContent .requestText {
+  width: auto;
+  padding: 5px;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible .requestContent .requestForm {
+  background-color: white;
+  opacity: 8%;
+  height: 100vh;
+  width: 100vw;
+  padding: 5px;
+}
+.app .content-wrapper .page-attack.visible .content-attack.payloads {
+  visibility: hidden;
+}
+.app .content-wrapper .page-attack.visible .content-attack.payloads.visible {
+  visibility: visible;
+  padding: 20px;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  font-size: 20px;
+}
+.app .content-wrapper .page-attack.visible .content-attack.ressource {
+  visibility: hidden;
+}
+.app .content-wrapper .page-attack.visible .content-attack.ressource.visible {
+  visibility: visible;
+  padding: 20px;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  font-size: 20px;
+}
+.app .content-wrapper .page-attack.visible .content-attack.options {
+  visibility: hidden;
+}
+.app .content-wrapper .page-attack.visible .content-attack.options.visible {
+  visibility: visible;
+  padding: 20px;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  font-size: 20px;
+}
+.app .content-wrapper .page-result {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.app .content-wrapper .page-result.visible {
+  visibility: visible;
+}
+.app .content-wrapper .page-result.visible .content-result {
+  background-color: rgb(236, 25, 25);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}/*# sourceMappingURL=style.css.map */

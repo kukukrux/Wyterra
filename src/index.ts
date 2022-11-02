@@ -1,7 +1,10 @@
 import { AxiosRequestConfig } from 'axios';
 import { getRequest, postRequest, bruteForceAttack } from './modules/axios';
+import express from 'express';
 
+const app = express();
 const args = process.argv.slice(2);
+const port = 8888;
 
 switch (args[0]) {
 case 'help': {
@@ -22,7 +25,27 @@ case 'attack': {
 	break;
 }
 default: {
-	console.log('You did something wrong');
+	console.log('Only starting Web Application');
+
+	app.use(express.json());
+	app.use(express.urlencoded());
+	app.use(express.static('public'));
+
+	app.get('/', (req, res) => {
+		console.log(req.url);
+		res.sendFile(__dirname + '/index.html');
+	});
+
+	app.post('/', (req, res) => {
+		console.log(req.body);
+		res.sendFile(__dirname + '/index.html');
+
+		// res.sendStatus(200);
+	});
+
+	app.listen(port, () => {
+		console.log(`Application Interface started at http://localhost:${port}`);
+	});
 	break;
 }
 }
