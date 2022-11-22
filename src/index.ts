@@ -38,9 +38,24 @@ default: {
 
 	app.post('/', (req, res) => {
 		console.log(req.body);
-		res.sendFile(__dirname + '/index.html');
+		// const headers = Array.from(req.body.header.matchAll('"(.*?)"'));
+		const extractedHeaders = req.body.header.split('\r\n');
+		const config: AxiosRequestConfig = {
+			headers: {},
+		};
+		config.headers = extractedHeaders;
+		console.log(
+			`
+Position Parameters:
+Attack Type: ${req.body.attackType}
+Target: ${req.body.targetURL}
+Header: ${JSON.stringify(config)}
+Data: '${req.body.data}'
+			`,
+		);
 
-		// res.sendStatus(200);
+
+		res.sendFile(__dirname + '/index.html');
 	});
 
 	app.listen(port, () => {
