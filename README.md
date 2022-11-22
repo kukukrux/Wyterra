@@ -3,6 +3,9 @@ Pentest Script
 WORKING ACTIVELY CODE IS VERY EWWWWW
 IM NOT GONNNA PAY 400€ TO PORTSWIGGER F U
 
+## Currently working on
+- Web UI
+
 ## How to start
 
 Node Version: 16.18.0
@@ -12,3 +15,7 @@ Node Version: 16.18.0
 3. `yarn install`
 4. Have ESLint installed or im gonna kill you
 6. `yarn start attack url`
+
+or 
+
+6.`yarn start` for web application at localhost:8888
