@@ -5,6 +5,10 @@ IM NOT GONNNA PAY 400€ TO PORTSWIGGER F U
 
 ## Currently working on
 - Web UI
+- EJS Implementation
+
+## Documentation
+Documentation and explanation is found inside the DOC folder
 
 ## How to start
 
@@ -14,7 +18,7 @@ Node Version: 16.18.0
 2. make sure yarn is installed
 3. `yarn install`
 4. Have ESLint installed or im gonna kill you
-6. `yarn start attack url`
+6. `yarn start attack 'url'`
 
 or 
 

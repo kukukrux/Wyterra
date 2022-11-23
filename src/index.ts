@@ -1,15 +1,21 @@
 import { AxiosRequestConfig } from 'axios';
 import { getRequest, postRequest, bruteForceAttack } from './modules/axios';
 import express from 'express';
+import { platform } from 'os';
+import { exec } from 'child_process';
+import * as child from 'child_process';
 
-const app = express();
 const args = process.argv.slice(2);
-const port = 8888;
 
 switch (args[0]) {
 case 'help': {
 	console.log('Insert Help Menu Here');
 	console.log(process.argv);
+
+	const start = (process.platform == 'darwin' ? 'open' : process.platform == 'win32' ? 'start' : 'xdg-open');
+	child.exec(start + )
+
+
 	break;
 }
 case 'get': {
@@ -25,7 +31,12 @@ case 'attack': {
 	break;
 }
 default: {
-	console.log('Only starting Web Application');
+	console.log('Starting Web Application');
+
+	const app = express();
+	const port = 8888;
+
+	app.set('view engine', 'ejs');
 
 	app.use(express.json());
 	app.use(express.urlencoded());
@@ -64,6 +75,14 @@ Data: '${req.body.data}'
 	break;
 }
 }
+
+const destroy = () => {
+	console.log('Server terminating...');
+	console.log('Done!');
+};
+process.on('SIGINT', destroy);
+process.on('SIGTERM', destroy);
+
 /**
  * RUNTIME
  */
