@@ -20,6 +20,4 @@ Node Version: 16.18.0
 2. make sure yarn is installed
 3. `yarn install`
 4. Have ESLint installed or im gonna kill you
-6. `yarn start attack 'url'`
-or 
-6.`yarn start` for web application at localhost:8888
+6. `yarn start attack 'url'` or `yarn start` for web application at localhost:8888
