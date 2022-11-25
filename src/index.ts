@@ -1,21 +1,15 @@
-import { AxiosRequestConfig } from 'axios';
+import { Axios, AxiosRequestConfig } from 'axios';
 import { getRequest, postRequest, bruteForceAttack } from './modules/axios';
 import express from 'express';
-import { platform } from 'os';
 import { exec } from 'child_process';
-import * as child from 'child_process';
+
 
 const args = process.argv.slice(2);
 
 switch (args[0]) {
 case 'help': {
-	console.log('Insert Help Menu Here');
-	console.log(process.argv);
-
 	const start = (process.platform == 'darwin' ? 'open' : process.platform == 'win32' ? 'start' : 'xdg-open');
-	child.exec(start + )
-
-
+	exec(start + ' https://github.com/kukukrux/Wyterra/blob/main/DOC/documentation.md');
 	break;
 }
 case 'get': {
@@ -42,46 +36,90 @@ default: {
 	app.use(express.urlencoded());
 	app.use(express.static('public'));
 
+	/**
+	 * - - - - - - - - GET PAGES
+	 */
+
 	app.get('/', (req, res) => {
 		console.log(req.url);
-		res.sendFile(__dirname + '/index.html');
+		// res.sendFile(__dirname + '/index.html');
+		res.render('pages/index', {
+			formAttackType : null,
+			formTarget : null,
+			formHeader : null,
+			formData : null,
+			formDiscriminator : null,
+			foundPayloads : null,
+		});
 	});
 
+	app.get('/about', function(req, res) {
+		console.log(req.url);
+		res.render('pages/about');
+	});
+
+	/**
+	 * - - - - - - - - POST PAGES
+	 */
+
 	app.post('/', (req, res) => {
-		console.log(req.body);
+		console.log('Request Body: ', req.body);
 		// const headers = Array.from(req.body.header.matchAll('"(.*?)"'));
 		const extractedHeaders = req.body.header.split('\r\n');
 		const config: AxiosRequestConfig = {
 			headers: {},
 		};
 		config.headers = extractedHeaders;
+		const formAttackType: string = req.body.attackType;
+		const formTarget: string = req.body.targetURL;
+		// const formHeader = JSON.stringify(config);
+		const formHeader: string = JSON.stringify(config.headers);
+		const formData: string = req.body.data;
+		const formDiscriminator: string = req.body.discriminator;
+		const regexPayloads = new RegExp(`\\${formDiscriminator}(\\w+)\\${formDiscriminator}`, 'g');
+		let foundPayloads = null;
+		if (formData.match(regexPayloads) === null) {
+			foundPayloads = [];
+		} else {
+			foundPayloads = formData.match(regexPayloads);
+		}
 		console.log(
 			`
 Position Parameters:
-Attack Type: ${req.body.attackType}
-Target: ${req.body.targetURL}
-Header: ${JSON.stringify(config)}
-Data: '${req.body.data}'
+Attack Type: ${formAttackType}
+Target: ${formTarget}
+Header: ${formHeader}
+Data: '${formData}'
+Discriminator: ${formDiscriminator}
+${foundPayloads!.length} Payloads: ${foundPayloads}
 			`,
 		);
 
-
-		res.sendFile(__dirname + '/index.html');
+		res.render('pages/index', {
+			formAttackType : formAttackType,
+			formTarget : formTarget,
+			formHeader : formHeader,
+			formData : formData,
+			formDiscriminator : formDiscriminator,
+			foundPayloads : foundPayloads,
+		});
 	});
 
-	app.listen(port, () => {
+
+	const server = app.listen(port, () => {
 		console.log(`Application Interface started at http://localhost:${port}`);
 	});
+
+	const destroy = () => {
+		console.log('Server terminating...');
+		server.close();
+		console.log('Done!');
+	};
+	process.on('SIGINT', destroy);
+	process.on('SIGTERM', destroy);
 	break;
 }
 }
-
-const destroy = () => {
-	console.log('Server terminating...');
-	console.log('Done!');
-};
-process.on('SIGINT', destroy);
-process.on('SIGTERM', destroy);
 
 /**
  * RUNTIME

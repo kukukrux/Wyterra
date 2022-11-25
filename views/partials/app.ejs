@@ -1,0 +1,88 @@
+<div class="app">
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-container-logo">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-grid-dots" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <circle cx="5" cy="5" r="1"></circle>
+                        <circle cx="12" cy="5" r="1"></circle>
+                        <circle cx="19" cy="5" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle>
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="19" r="1"></circle>
+                        <circle cx="12" cy="19" r="1"></circle>
+                        <circle cx="19" cy="19" r="1"></circle>
+                    </svg>
+                </span>
+            </div>
+            <div class="navbar-container-links">
+                <a class="positions navbar-item active">Positions</a>
+                <a class="payloads navbar-item">Payloads</a>
+                <a class="ressource navbar-item">Ressource Pool</a>
+                <a class="options navbar-item">Options</a>
+            </div>
+        </div>
+    </header>
+    <div class="content-wrapper">
+        <div class="sidebar">
+            <ul class="sidebar-links">
+                <p class="attack sidebar-item active">Attack</p>
+                <p class="result sidebar-item">Result</p>
+            </ul>
+        </div>
+        <div class="page-attack visible">
+            <div class="content-attack positions visible">
+                <form action="/" method="post" enctype="application/json" class="formPositions">
+                    <div>
+                        <label for="attackType">Attack Type:</label>
+                        <select class="attackType" name="attackType">
+                            <option value="sniper">Sniper</option>
+                            <option value="battering">Battering Ram</option>
+                            <option value="pitchfork">Pitchfork</option>
+                            <option value="cluster">Cluster Bomb</option>
+                        </select></div>
+                    <div>
+                        <label for="targetURL">Target:</label>
+                        <input type="url" name="targetURL" class="targetURL">
+                    </div>
+                    <div>
+                        <label for="header">Header:</label>
+                        <textarea class="header" name="header" cols="30" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <label for="data">Data:</label>
+                        <textarea class="data" name="data" cols="30" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <input type="submit" value="Save">
+                    </div>
+                </form>
+                <div class="requestContent">
+                    <span class="requestText">
+                        Request:
+                    </span>
+                    <span class="requestForm">
+                    </span>
+                </div>
+            </div>
+            <div class="content-attack payloads">
+
+            </div>
+            <div class="content-attack ressource">
+                
+            </div>
+            <div class="content-attack options">
+                
+            </div>
+            <footer></footer>
+        </div>
+        <div class="page-result">
+            <div class="content-result">
+                <form></form>
+            </div>
+            <footer></footer>
+        </div>
+    </div>
+</div> 

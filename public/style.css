@@ -95,18 +95,23 @@ body {
   width: 0;
   height: 0;
 }
+.app .content-wrapper .page-attack .highlight {
+  color: rgb(0, 230, 153);
+}
 .app .content-wrapper .page-attack.visible {
   visibility: visible;
+  display: block;
 }
 .app .content-wrapper .page-attack.visible .content-attack.positions {
   visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
 .app .content-wrapper .page-attack.visible .content-attack.positions.visible {
   visibility: visible;
   padding: 20px;
-  position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 14em;
   font-size: 20px;
 }
 .app .content-wrapper .page-attack.visible .content-attack.positions.visible form {
@@ -117,66 +122,85 @@ body {
   margin: 10px 0;
 }
 .app .content-wrapper .page-attack.visible .content-attack.positions.visible form .targetURL {
-  width: 70vw;
+  width: 20em;
 }
 .app .content-wrapper .page-attack.visible .content-attack.positions.visible form .header {
-  width: 20vw;
-  height: 40px;
+  width: 20em;
+  height: 3em;
 }
 .app .content-wrapper .page-attack.visible .content-attack.positions.visible form .data {
-  width: 20vw;
-  height: 40px;
+  width: 20em;
+  height: 3em;
+}
+.app .content-wrapper .page-attack.visible .content-attack.positions.visible form .discriminator {
+  width: 2em;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .app .content-wrapper .page-attack.visible .content-attack.positions.visible form input {
   font-size: 16px;
   width: 60px;
   height: 30px;
 }
-.app .content-wrapper .page-attack.visible .content-attack.positions.visible .requestContent {
-  display: flex;
-}
-.app .content-wrapper .page-attack.visible .content-attack.positions.visible .requestContent .requestText {
-  width: auto;
-  padding: 5px;
-}
-.app .content-wrapper .page-attack.visible .content-attack.positions.visible .requestContent .requestForm {
-  background-color: white;
-  opacity: 8%;
-  height: 100vh;
-  width: 100vw;
-  padding: 5px;
-}
 .app .content-wrapper .page-attack.visible .content-attack.payloads {
   visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
 .app .content-wrapper .page-attack.visible .content-attack.payloads.visible {
   visibility: visible;
   padding: 20px;
-  position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 14em;
   font-size: 20px;
 }
 .app .content-wrapper .page-attack.visible .content-attack.ressource {
   visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
 .app .content-wrapper .page-attack.visible .content-attack.ressource.visible {
   visibility: visible;
   padding: 20px;
-  position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 14em;
   font-size: 20px;
 }
 .app .content-wrapper .page-attack.visible .content-attack.options {
   visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
 .app .content-wrapper .page-attack.visible .content-attack.options.visible {
   visibility: visible;
   padding: 20px;
-  position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 14em;
+  font-size: 20px;
+}
+.app .content-wrapper .page-attack.visible .requestContent {
+  display: flex;
+  width: 100vw;
+  height: 14em;
+  padding-left: 20px;
+}
+.app .content-wrapper .page-attack.visible .requestContent .requestText {
+  width: auto;
+  padding: 5px;
+  font-size: 20px;
+}
+.app .content-wrapper .page-attack.visible .requestContent .requestForm {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 5px;
+  width: 50em;
+  height: 30em;
+}
+.app .content-wrapper .page-attack.visible .requestContent .requestForm .requestFormText {
+  display: block;
+  opacity: 100%;
+  color: white;
+  line-height: 1, 5rem;
   font-size: 20px;
 }
 .app .content-wrapper .page-result {

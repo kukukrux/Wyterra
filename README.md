@@ -9,6 +9,7 @@ IM NOT GONNNA PAY 400€ TO PORTSWIGGER F U
 
 ## Documentation
 Documentation and explanation is found inside the DOC folder
+or use `yarn start help`
 
 ## How to start
 

@@ -111,20 +111,26 @@ body {
             width: 0;
             height: 0;
 
+            .highlight {
+                color: rgb(0, 230, 153);
+            }
+
             &.visible {
                 visibility: visible;
+                display: block;
 
                 .content-attack {
 
                     &.positions {
                         visibility: hidden;
+                        width: 0px;
+                        height: 0px;
 
                         &.visible {
                             visibility: visible;
                             padding: 20px;
-                            position: absolute;
                             width: 100vw;
-                            height: 100vh;
+                            height: 14em;
                             font-size: 20px;
 
                             form {
@@ -136,17 +142,22 @@ body {
                                 }
     
                                 .targetURL {
-                                    width: 70vw;
+                                    width: 20em;
                                 }
     
                                 .header {
-                                    width: 20vw;
-                                    height: 40px;
+                                    width: 20em;
+                                    height: 3em;
                                 }
     
                                 .data {
-                                    width: 20vw;
-                                    height: 40px;
+                                    width: 20em;
+                                    height: 3em;
+                                }
+
+                                .discriminator {
+                                    width: 2em;
+                                    height: fit-content;
                                 }
     
                                 input {
@@ -155,60 +166,74 @@ body {
                                     height: 30px;
                                 }
                             }
-
-                            .requestContent {
-                                display: flex;
-    
-                                .requestText {
-                                    width: auto;
-                                    padding: 5px;
-                                }
-                                .requestForm {
-                                    background-color: white;
-                                    opacity: 8%;
-                                    height: 100vh;
-                                    width: 100vw;
-                                    padding: 5px;
-                                }
-                            }
                         }   
                     }
 
                     &.payloads {
                         visibility: hidden;
+                        width: 0px;
+                        height: 0px;
 
                         &.visible {
                             visibility: visible;
                             padding: 20px;
-                            position: absolute;
                             width: 100vw;
-                            height: 100vh;
+                            height: 14em;
                             font-size: 20px;
                         }
                     }
 
                     &.ressource {
                         visibility: hidden;
+                        width: 0px;
+                        height: 0px;
 
                         &.visible {
                             visibility: visible;
                             padding: 20px;
-                            position: absolute;
                             width: 100vw;
-                            height: 100vh;
+                            height: 14em;
                             font-size: 20px;
                         }
                     }
 
                     &.options {
                         visibility: hidden;
+                        width: 0px;
+                        height: 0px;
 
                         &.visible {
                             visibility: visible;
                             padding: 20px;
-                            position: absolute;
                             width: 100vw;
-                            height: 100vh;
+                            height: 14em;
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                .requestContent {
+                    display: flex;
+                    width: 100vw;
+                    height: 14em;
+                    padding-left: 20px;
+
+                    .requestText {
+                        width: auto;
+                        padding: 5px;
+                        font-size: 20px;
+                    }
+                    .requestForm {
+                        background-color: rgba(255,255,255,0.08);
+                        padding: 5px;
+                        width: 50em;
+                        height: 30em;
+
+                        .requestFormText {
+                            display: block;
+                            opacity: 100%;
+                            color: white;
+                            line-height: 1,5rem;
                             font-size: 20px;
                         }
                     }
