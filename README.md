@@ -1,14 +1,15 @@
 # Wyterra
 Pentest Script
 WORKING ACTIVELY CODE IS VERY EWWWWW
-IM NOT GONNNA PAY 400€ TO PORTSWIGGER F U
+IM NOT GONNNA PAY 400€ TO PORTSWIGGER
 
 ## Currently working on
 - Web UI
 - EJS Implementation
+- Documentation
 
 ## Documentation
-Documentation and explanation is found inside the DOC folder
+Documentation (working on it) and explanation is found inside the DOC folder
 or use `yarn start help`
 
 ## How to start
