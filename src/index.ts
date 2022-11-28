@@ -1,5 +1,5 @@
-import { Axios, AxiosRequestConfig } from 'axios';
-import { getRequest, postRequest, bruteForceAttack } from './modules/axios';
+import { AxiosRequestConfig } from 'axios';
+import { getRequest, postRequest, bruteForceAttack, sniperAttackTemplate } from './modules/axios';
 import express from 'express';
 import { exec } from 'child_process';
 
@@ -22,6 +22,10 @@ case 'post': {
 }
 case 'attack': {
 	bruteForceAttack(args[1] as string, args[2] as string);
+	break;
+}
+case 'snipe': {
+	sniperAttackTemplate(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string);
 	break;
 }
 default: {
