@@ -1,5 +1,14 @@
 import { AxiosRequestConfig } from 'axios';
-import { getRequest, postRequest, bruteForceAttack, sniperAttackTemplate } from './modules/axios';
+import {
+	test,
+	getRequest,
+	postRequest,
+	bruteForceAttack,
+	sniperAttackTemplate,
+	batteringAttackTemplate,
+	pitchforkAttackTemplate,
+	clusterAttackTemplate,
+} from './modules/axios';
 import express from 'express';
 import { exec } from 'child_process';
 
@@ -12,6 +21,10 @@ case 'help': {
 	exec(start + ' https://github.com/kukukrux/Wyterra/blob/main/DOC/documentation.md');
 	break;
 }
+case 'test': {
+	test(args[1] as string);
+	break;
+}
 case 'get': {
 	getRequest(args[1] as string, args[2] as AxiosRequestConfig);
 	break;
@@ -21,11 +34,23 @@ case 'post': {
 	break;
 }
 case 'attack': {
-	bruteForceAttack(args[1] as string, args[2] as string);
+	bruteForceAttack(args[1] as string);
 	break;
 }
 case 'snipe': {
 	sniperAttackTemplate(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string);
+	break;
+}
+case 'ram': {
+	batteringAttackTemplate(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string);
+	break;
+}
+case 'pitchfork': {
+	pitchforkAttackTemplate(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string);
+	break;
+}
+case 'cluster': {
+	clusterAttackTemplate(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string);
 	break;
 }
 default: {
