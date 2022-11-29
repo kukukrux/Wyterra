@@ -35,10 +35,17 @@ export const postRequest = (targetURL: string, data?: any, config?: AxiosRequest
 		});
 };
 
-export const test = async (payloadSRC: string) => {
-	const payload: string[][] = [['1', '2', '3', '4', '5'], ['1', '2', '3'], ['1', '2', '3', '4']];
+export const test = async (payloadSRC?: string) => {
+	console.log(payloadSRC);
+	const payload: string[][] = [['1', '2', '3'], ['1', '2', '3', '3'], ['1', '2', '3', '4', '5']];
 
-	const 
+	for (let a = 0; a < payload[0].length; a++) {
+		for (let b = 0; b < payload[1].length; b++) {
+			for (let c = 0; c < payload[2].length; c++) {
+				console.log(payload[0][a] + payload[1][b] + payload[2][c]);
+			}
+		}
+	}
 };
 
 export const sniperAttackTemplate = async (
@@ -571,52 +578,56 @@ Estimated Amount of attacks: ${estimatedAmountOfAttacks}
 	/**
 	 * Attack Loop
 	 */
-	for (let j = 0; j < foundPayloads.length; j++) {
-		for (let i = 0; i < payload[j][i].length; i++) {
-			// Find Paylods and insert
-			// const axiosData = data.replace(regexForPayload, payload[i]);
-			let axiosData = data;
-			for (let l = 0; l < foundPayloads.length; l++) {
-				axiosData = axiosData.replace(foundPayloads[l], payload[l][i]);
-			}
-			// Request Duration count start
-			await setTimeout(delay);
-			const requestStartAt: number = performance.now();
-			await axios
-				.post(target, axiosData, config)
-				.then(response => {
-					const requestEndAt: number = performance.now();
-					// Request Duration Calculation
-					const requestDuration: number = requestEndAt - requestStartAt;
-
-					// Check Response Data for Regex Extract
-					if (response.data.includes(extractRegexStart)) {
-						extractedData = `${response.data.match(extractRegex)[1]}`;
-					} else {
-						extractedData = '### NO REGEX EXTRACT ###';
+	for (let i = 0; i < payload.length; i++) {
+		for (let a = 0; a < payload[i].length; a++) {
+			for (let b = 0; b < payload[i].length; b++) {
+				for (let c = 0; c < payload[i].length; c++) {
+					// Find Paylods and insert
+					// const axiosData = data.replace(regexForPayload, payload[i]);
+					let axiosData = data;
+					for (let x = 0; x < foundPayloads.length; x++) {
+						axiosData = axiosData.replace(foundPayloads[x], payload[x][i]);
 					}
+					// Request Duration count start
+					await setTimeout(delay);
+					const requestStartAt: number = performance.now();
+					await axios
+						.post(target, axiosData, config)
+						.then(response => {
+							const requestEndAt: number = performance.now();
+							// Request Duration Calculation
+							const requestDuration: number = requestEndAt - requestStartAt;
 
-					// Console Output for current attack try
-					console.log(
-						`
+							// Check Response Data for Regex Extract
+							if (response.data.includes(extractRegexStart)) {
+								extractedData = `${response.data.match(extractRegex)[1]}`;
+							} else {
+								extractedData = '### NO REGEX EXTRACT ###';
+							}
+
+							// Console Output for current attack try
+							console.log(
+								`
 Try #${i + 1} | data: '${axiosData}'
 RESPONSE:
 Status: ${response.status} ${response.statusText}
 Extracted data: ${extractedData}
 Response Time: ${requestDuration}
 Pending amount of attacks: ${estimatedAmountOfAttacks - i}
-						`,
-					);
-				})
-				.catch(err => {
-					console.log(err);
-				});
-			// Check for a Change in extracted Data and log it
-			if ((i !== 0) && (extractedDataCache !== extractedData)) {
-				console.log(`CHANGE FOUND AT TRY #${i + 1}\nMaybe a Hit?`);
-				hits.push(`Try #${i + 1} | data: '${axiosData}'`);
-			} else {
-				extractedDataCache = extractedData;
+								`,
+							);
+						})
+						.catch(err => {
+							console.log(err);
+						});
+					// Check for a Change in extracted Data and log it
+					if ((i !== 0) && (extractedDataCache !== extractedData)) {
+						console.log(`CHANGE FOUND AT TRY #${i + 1}\nMaybe a Hit?`);
+						hits.push(`Try #${i + 1} | data: '${axiosData}'`);
+					} else {
+						extractedDataCache = extractedData;
+					}
+				}
 			}
 		}
 	}
