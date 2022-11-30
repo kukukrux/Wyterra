@@ -3,11 +3,7 @@ import {
 	test,
 	getRequest,
 	postRequest,
-	bruteForceAttack,
-	sniperAttackTemplate,
-	batteringAttackTemplate,
-	pitchforkAttackTemplate,
-	clusterAttackTemplate,
+	attack,
 } from './modules/axios';
 import express from 'express';
 import { exec } from 'child_process';
@@ -34,23 +30,7 @@ case 'post': {
 	break;
 }
 case 'attack': {
-	bruteForceAttack(args[1] as string);
-	break;
-}
-case 'snipe': {
-	sniperAttackTemplate(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string);
-	break;
-}
-case 'ram': {
-	batteringAttackTemplate(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string);
-	break;
-}
-case 'pitchfork': {
-	pitchforkAttackTemplate(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string);
-	break;
-}
-case 'cluster': {
-	clusterAttackTemplate(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string);
+	attack(args[1] as string, args[2] as string, args[3] as string, args[4] as string, args[5] as string, args[6] as string);
 	break;
 }
 default: {
