@@ -9,10 +9,18 @@ export const getRequest = (targetURL: string, config?: AxiosRequestConfig) => {
 			// return response;
 			// console.log('REQUEST CONFIG:\n', response.config);
 			// console.log('REQUEST:\n', response.request);
-			console.log('RESPONSE STATUS:\n', response.status);
-			console.log('RESPONSE STATUSTEXT:\n', response.statusText);
-			console.log('RESPONSE HEADER:\n', response.headers);
-			console.log('RESPONSE DATA:\n', response.data);
+			console.log('RESPONSE STATUS:\n',
+				response.status,
+			);
+			console.log('RESPONSE STATUSTEXT:\n',
+				response.statusText,
+			);
+			console.log('RESPONSE HEADER:\n',
+				response.headers,
+			);
+			console.log('RESPONSE DATA:\n',
+				response.data,
+			);
 		})
 		.catch(err => {
 			console.log(err);
